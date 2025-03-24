@@ -1,0 +1,17 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      - MONGO_URL=mongodb://db:27017/itemsdb
+  db:
+    image: mongo:latest
+    volumes:
+      - mongodb_data:/data/db
+    expose:
+      - "27017"
+volumes:
+  mongodb_data:
