@@ -13,8 +13,8 @@ mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
-.then(() => console.log("✅ Connecté à MongoDB"))
-.catch(err => console.error("❌ Erreur de connexion MongoDB:", err));
+.then(() => console.log("Connecté à MongoDB"))
+.catch(err => console.error("Erreur de connexion MongoDB:", err));
 
 // Démarrer le serveur
 app.listen(PORT, () => {
@@ -41,6 +41,7 @@ app.post('/items', async (req, res) => {
         await newItem.save();
         res.status(201).json(newItem);
     } catch (err) {
-        res.status(400).json({ message: "Erreur lors de l'ajout" });
-    }
-});
+        res.status(400).json({ message: "Erreur lors de l'ajout" });  
+    }  });
+
+
