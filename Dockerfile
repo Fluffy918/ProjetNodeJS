@@ -1,21 +1,20 @@
-# Dockerfile 
-# Utiliser l'image officielle Node.js
-FROM node:18
+# Utiliser l'image officielle Node.js comme base
+FROM node:14
 
-# Définir le dossier de travail dans le conteneur
-WORKDIR /app
+# Créer un dossier de travail dans le conteneur
+WORKDIR /usr/src/app
 
-# Copier les fichiers package.json et package-lock.json
+# Copier le fichier package.json et package-lock.json
 COPY package*.json ./
 
 # Installer les dépendances
 RUN npm install
 
-# Copier le reste des fichiers du projet
+# Copier le reste de l'application
 COPY . .
 
-# Exposer le port 3000
+# Exposer le port utilisé par l'application
 EXPOSE 3000
 
-# Lancer l'application
-CMD ["node", "server.js"]
+# Démarrer l'application
+CMD ["node", "app.js"]
